@@ -1,0 +1,278 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Birthday Tripple G</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(to bottom right, #e8ebf8, #d6e4f0);
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #2c3e50;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+    }
+
+    header {
+      text-align: center;
+      margin-top: 40px;
+      z-index: 2;
+      position: relative;
+    }
+
+    header h1 {
+      font-size: 2.8rem;
+      margin-bottom: 10px;
+    }
+
+    header h2 {
+      font-size: 1.3rem;
+      font-style: italic;
+      color: #5a6d84;
+      margin-bottom: 20px;
+    }
+
+    img.cat-image {
+      width: 280px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      margin-bottom: 30px;
+    }
+
+    section {
+      margin: 30px auto;
+      max-width: 700px;
+      padding: 20px;
+      z-index: 2;
+      position: relative;
+    }
+
+    section h3 {
+      text-align: center;
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      color: #2c3e50;
+    }
+
+    .card {
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+      font-size: 1.1rem;
+      line-height: 1.7;
+    }
+
+    .thank-you-section {
+      background: #f4f0fa;
+      border-left: 6px solid #b39ddb;
+    }
+
+    .thank-card {
+      background: #fff;
+      border: 1px dashed #d1c4e9;
+    }
+
+    .blessing-section {
+      background: #eaf6ff;
+      border-left: 6px solid #90caf9;
+    }
+
+    .blessing-card {
+      background: #ffffff;
+      border-left: 4px solid #64b5f6;
+      box-shadow: inset 0 0 30px rgba(100, 181, 246, 0.15);
+      font-family: 'Great Vibes', cursive;
+      font-size: 1.6rem;
+      text-align: center;
+      color: #2a3d58;
+    }
+
+    .confession-section {
+      background: #fffde7;
+      border-left: 6px solid #ffe082;
+    }
+
+    .confession-card {
+      background: #fffde0;
+      border: 2px solid #ffd54f;
+      animation: pulseGlow 3s infinite;
+      position: relative;
+    }
+
+    .signature {
+      text-align: right;
+      font-size: 1.5rem;
+      margin-top: 15px;
+      color: #fbc02d;
+      font-weight: bold;
+    }
+
+    @keyframes pulseGlow {
+      0% { box-shadow: 0 0 10px rgba(255, 215, 64, 0.3); }
+      50% { box-shadow: 0 0 20px rgba(255, 215, 64, 0.6); }
+      100% { box-shadow: 0 0 10px rgba(255, 215, 64, 0.3); }
+    }
+
+    .music-button {
+      margin-top: 30px;
+      padding: 10px 20px;
+      font-size: 1rem;
+      background-color: #6c8ebf;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      z-index: 3;
+      position: relative;
+    }
+
+    #confetti-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+
+    .balloon-container {
+      position: fixed;
+      bottom: -150px;
+      left: 0;
+      right: 0;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .balloon {
+      width: 40px;
+      height: 55px;
+      border-radius: 50%;
+      background-color: red;
+      position: absolute;
+      animation: floatUp 10s infinite ease-in;
+      opacity: 0.8;
+    }
+
+    .balloon.red   { left: 10%; background: #ff4d4d; animation-delay: 0s; }
+    .balloon.blue  { left: 40%; background: #4da6ff; animation-delay: 2s; }
+    .balloon.green { left: 70%; background: #6de37e; animation-delay: 4s; }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-120vh); }
+    }
+
+    footer {
+      margin: 50px 0;
+      font-size: 0.85rem;
+      color: #888;
+      z-index: 2;
+      position: relative;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Dear Tripple G 🤗</h1>
+    <h2>Clocking another year! Soon you’ll be greying for real — Papaa ke Acom 👴🏿😂</h2>
+    <img src="https://i.imgur.com/EH6N12M.jpeg" alt="Birthday Cat" class="cat-image" />
+  </header>
+
+  <div class="balloon-container">
+    <div class="balloon red"></div>
+    <div class="balloon blue"></div>
+    <div class="balloon green"></div>
+  </div>
+
+  <canvas id="confetti-canvas"></canvas>
+
+  <button onclick="document.getElementById('birthday-music').play()" class="music-button">
+    Play Birthday Song 🎂🎶
+  </button>
+
+  <section class="thank-you-section">
+    <h3>Part 1 – Just Thank You</h3>
+    <div class="card thank-card">
+      <p>🌟 Thank you for being <strong>YOU</strong>.</p>
+      <p>💖 For being ridiculously kind.</p>
+      <p>🌱 For pushing people to grow and glow.</p>
+      <p>🦋 For embracing change with courage.</p>
+      <p>👂🏽 For always listening with your whole heart.</p>
+      <p>🧘🏽‍♂️ And for being the steady, calm voice of reason when the rest of us are spiraling.</p>
+    </div>
+  </section>
+
+  <section class="blessing-section">
+    <h3>Thank You</h3>
+    <div class="card blessing-card">
+      <p>I’m so excited to see all the beauty and goodness God still has in store for you.</p>
+      <p>
+        May this new chapter be filled with joy ✨,<br />
+        deep peace 🕊️,<br />
+        divine surprises 🎁,<br />
+        and love that fills you to the brim and overflows. ❤️‍🔥
+      </p>
+    </div>
+  </section>
+
+  <section class="confession-section">
+    <h3>Part 3 – A Dramatic Confession</h3>
+    <div class="card confession-card">
+      <p>I horribly love you — in the best, can’t-help-it, hold-my-heart kind of way.</p>
+      <p class="signature">😆💛</p>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 Papaa ke Acom — made with dramatic affection 💙
+  </footer>
+
+  <audio id="birthday-music" loop>
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/16/audio_1a9fc5ad7e.mp3?filename=birthday-acoustic-background-110571.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <script>
+    const canvas = document.getElementById('confetti-canvas');
+    const ctx = canvas.getContext('2d');
+    let confetti = [];
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    class Confetto {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height - canvas.height;
+        this.radius = Math.random() * 6 + 4;
+        this.color = `hsl(${Math.random() * 360}, 70%, 60%)`;
+        this.speed = Math.random() * 3 + 1;
+      }
+      update() { this.y += this.speed; if (this.y > canvas.height) this.y = 0; }
+      draw() { ctx.beginPath(); ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2); ctx.fillStyle = this.color; ctx.fill(); }
+    }
+
+    for (let i = 0; i < 150; i++) confetti.push(new Confetto());
+
+    function animateConfetti() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      confetti.forEach(c => { c.update(); c.draw(); });
+      requestAnimationFrame(animateConfetti);
+    }
+    animateConfetti();
+  </script>
+
+</body>
+</html>
